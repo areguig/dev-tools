@@ -59,15 +59,15 @@ A frontend-only web application providing essential developer utilities, deploya
   - [x] Add URL encoding/decoding functionality
   - [x] Include component encoding options
 
-### ✅ Checkpoint 4: Hash & Crypto Tools
-- [ ] Hash Generator (MD5, SHA1, SHA256, SHA512)
-  - [ ] Create HashTool component
-  - [ ] Implement multiple hash algorithms
-  - [ ] Add file hashing capability
-- [ ] Password Generator
-  - [ ] Create PasswordTool component
-  - [ ] Add customizable options (length, character sets)
-  - [ ] Include strength indicator
+### ✅ Checkpoint 4: Hash & Crypto Tools (COMPLETED)
+- [x] Hash Generator (MD5, SHA1, SHA256, SHA512)
+  - [x] Create HashTool component
+  - [x] Implement multiple hash algorithms
+  - [x] Add file hashing capability
+- [x] Password Generator
+  - [x] Create PasswordTool component
+  - [x] Add customizable options (length, character sets)
+  - [x] Include strength indicator
 
 ### ✅ Checkpoint 5: External API Integration Tools
 - [ ] URL Shortener (using TinyURL or similar free API)

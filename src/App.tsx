@@ -9,6 +9,8 @@ import YAMLTool from './tools/YAMLTool'
 import DiffTool from './tools/DiffTool'
 import URLTool from './tools/URLTool'
 import HashTool from './tools/HashTool'
+import PasswordTool from './tools/PasswordTool'
+import URLShortenerTool from './tools/URLShortenerTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
             <Route path="/diff" element={<DiffTool />} />
             <Route path="/url" element={<URLTool />} />
             <Route path="/hash" element={<HashTool />} />
+            <Route path="/password" element={<PasswordTool />} />
+            <Route path="/url-shortener" element={<URLShortenerTool />} />
           </Routes>
         </Layout>
       </Router>

@@ -29,6 +29,14 @@ const Home = () => {
       ]
     },
     {
+      title: 'URL & QR Tools',
+      description: 'Shorten URLs and generate QR codes',
+      tools: [
+        { name: 'URL Shortener', path: '/url-shortener', icon: '🔗' },
+        { name: 'QR Code Generator', path: '/qr-code', icon: '📱' },
+      ]
+    },
+    {
       title: 'Comparison & Analysis',
       description: 'Compare and analyze text and files',
       tools: [
