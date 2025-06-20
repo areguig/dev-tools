@@ -8,6 +8,7 @@ import XMLTool from './tools/XMLTool'
 import YAMLTool from './tools/YAMLTool'
 import DiffTool from './tools/DiffTool'
 import URLTool from './tools/URLTool'
+import HashTool from './tools/HashTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/yaml" element={<YAMLTool />} />
             <Route path="/diff" element={<DiffTool />} />
             <Route path="/url" element={<URLTool />} />
+            <Route path="/hash" element={<HashTool />} />
           </Routes>
         </Layout>
       </Router>
