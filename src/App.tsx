@@ -7,6 +7,7 @@ import JSONTool from './tools/JSONTool'
 import XMLTool from './tools/XMLTool'
 import YAMLTool from './tools/YAMLTool'
 import DiffTool from './tools/DiffTool'
+import URLTool from './tools/URLTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/xml" element={<XMLTool />} />
             <Route path="/yaml" element={<YAMLTool />} />
             <Route path="/diff" element={<DiffTool />} />
+            <Route path="/url" element={<URLTool />} />
           </Routes>
         </Layout>
       </Router>

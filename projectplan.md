@@ -44,20 +44,20 @@ A frontend-only web application providing essential developer utilities, deploya
   - [x] Add XML validation
   - [x] Implement formatting functionality
 
-### ✅ Checkpoint 3: Advanced Text Tools
-- [ ] YAML Syntax Verifier
-  - [ ] Create YAMLTool component
-  - [ ] Implement YAML parsing and validation
-  - [ ] Display syntax errors with line numbers
-- [ ] Text Diff Tool
-  - [ ] Create DiffTool component
-  - [ ] Implement side-by-side and unified diff views
-  - [ ] Add file upload capability
-  - [ ] Include line-by-line comparison highlighting
-- [ ] URL Encoder/Decoder
-  - [ ] Create URLTool component
-  - [ ] Add URL encoding/decoding functionality
-  - [ ] Include component encoding options
+### ✅ Checkpoint 3: Advanced Text Tools (COMPLETED)
+- [x] YAML Syntax Verifier
+  - [x] Create YAMLTool component
+  - [x] Implement YAML parsing and validation
+  - [x] Display syntax errors with line numbers
+- [x] Text Diff Tool
+  - [x] Create DiffTool component
+  - [x] Implement side-by-side and unified diff views
+  - [x] Add file upload capability
+  - [x] Include line-by-line comparison highlighting
+- [x] URL Encoder/Decoder
+  - [x] Create URLTool component
+  - [x] Add URL encoding/decoding functionality
+  - [x] Include component encoding options
 
 ### ✅ Checkpoint 4: Hash & Crypto Tools
 - [ ] Hash Generator (MD5, SHA1, SHA256, SHA512)
@@ -106,7 +106,66 @@ A frontend-only web application providing essential developer utilities, deploya
 - [ ] Tool-specific help documentation
 - [ ] Export/import settings functionality
 
-### ✅ Checkpoint 8: Polish & Deployment
+### ✅ Checkpoint 8: Essential Utility Tools
+- [ ] UUID/GUID Generator
+  - [ ] Create UUIDTool component
+  - [ ] Support UUID v1, v4 generation
+  - [ ] Add bulk generation feature
+  - [ ] Include format options
+- [ ] HTML Entity Encoder/Decoder
+  - [ ] Create HTMLEntityTool component
+  - [ ] Bidirectional conversion
+  - [ ] Batch processing capability
+- [ ] Text Case Converter
+  - [ ] Create CaseConverterTool component
+  - [ ] Support all major case types (camelCase, snake_case, kebab-case, etc.)
+  - [ ] Programming language specific formats
+- [ ] Image to Base64 Converter
+  - [ ] Create ImageBase64Tool component
+  - [ ] Drag-and-drop file upload
+  - [ ] Multiple image format support
+
+### ✅ Checkpoint 9: Code Formatting Tools
+- [ ] CSS Minifier/Beautifier
+  - [ ] Create CSSFormatterTool component
+  - [ ] Minification and beautification modes
+  - [ ] Size comparison display
+- [ ] JavaScript Minifier/Beautifier
+  - [ ] Create JSFormatterTool component
+  - [ ] ES6+ syntax support
+  - [ ] Error handling and validation
+- [ ] SQL Formatter/Prettifier
+  - [ ] Create SQLFormatterTool component
+  - [ ] Multiple SQL dialect support
+  - [ ] Syntax highlighting
+
+### ✅ Checkpoint 10: Advanced Developer Tools
+- [ ] JWT Token Generator
+  - [ ] Create JWTGeneratorTool component
+  - [ ] Multiple signing algorithms
+  - [ ] Custom claims editor
+  - [ ] Expiration settings
+- [ ] Cron Expression Builder
+  - [ ] Create CronBuilderTool component
+  - [ ] Visual expression builder
+  - [ ] Human-readable explanations
+  - [ ] Next run time predictions
+- [ ] Markdown to HTML Converter
+  - [ ] Create MarkdownTool component
+  - [ ] Live preview functionality
+  - [ ] GitHub-flavored Markdown support
+
+### ✅ Checkpoint 11: Modern Development Tools
+- [ ] GraphQL Query Formatter
+  - [ ] Create GraphQLTool component
+  - [ ] Query validation and formatting
+  - [ ] Schema introspection support
+- [ ] Environment Variables Manager
+  - [ ] Create EnvVarsTool component
+  - [ ] Format conversion (.env, JSON, YAML)
+  - [ ] Secure handling and validation
+
+### ✅ Checkpoint 12: Polish & Deployment
 - [ ] Comprehensive testing across all tools
 - [ ] Performance optimization
 - [ ] Accessibility improvements (ARIA labels, keyboard navigation)
