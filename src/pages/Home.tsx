@@ -34,6 +34,7 @@ const Home = () => {
       tools: [
         { name: 'URL Shortener', path: '/url-shortener', icon: '🔗' },
         { name: 'QR Code Generator', path: '/qr-code', icon: '📱' },
+        { name: 'Lorem Ipsum Generator', path: '/lorem', icon: '📝' },
       ]
     },
     {

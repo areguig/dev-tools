@@ -69,20 +69,20 @@ A frontend-only web application providing essential developer utilities, deploya
   - [x] Add customizable options (length, character sets)
   - [x] Include strength indicator
 
-### ✅ Checkpoint 5: External API Integration Tools
-- [ ] URL Shortener (using TinyURL or similar free API)
-  - [ ] Create URLShortenerTool component
-  - [ ] Integrate with free URL shortening service
-  - [ ] Add URL validation
-  - [ ] Include QR code generation for shortened URLs
-- [ ] QR Code Generator
-  - [ ] Create QRCodeTool component
-  - [ ] Generate QR codes for text/URLs
-  - [ ] Add download functionality
-- [ ] Lorem Ipsum Generator
-  - [ ] Create LoremTool component
-  - [ ] Generate customizable placeholder text
-  - [ ] Include word/paragraph count options
+### ✅ Checkpoint 5: External API Integration Tools (COMPLETED)
+- [x] URL Shortener (using TinyURL or similar free API)
+  - [x] Create URLShortenerTool component
+  - [x] Integrate with free URL shortening service
+  - [x] Add URL validation
+  - [x] Include QR code generation for shortened URLs
+- [x] QR Code Generator
+  - [x] Create QRCodeTool component
+  - [x] Generate QR codes for text/URLs
+  - [x] Add download functionality
+- [x] Lorem Ipsum Generator
+  - [x] Create LoremTool component
+  - [x] Generate customizable placeholder text
+  - [x] Include word/paragraph count options
 
 ### ✅ Checkpoint 6: Additional Utility Tools
 - [ ] Color Palette Generator

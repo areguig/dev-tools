@@ -12,6 +12,7 @@ import HashTool from './tools/HashTool'
 import PasswordTool from './tools/PasswordTool'
 import URLShortenerTool from './tools/URLShortenerTool'
 import QRCodeTool from './tools/QRCodeTool'
+import LoremTool from './tools/LoremTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/password" element={<PasswordTool />} />
             <Route path="/url-shortener" element={<URLShortenerTool />} />
             <Route path="/qr-code" element={<QRCodeTool />} />
+            <Route path="/lorem" element={<LoremTool />} />
           </Routes>
         </Layout>
       </Router>
