@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const navigate = useNavigate()
 
   const tools = [
     { name: 'Base64', path: '/base64' },
@@ -22,9 +23,12 @@ const Navigation = () => {
     <nav className="bg-white dark:bg-gray-800 shadow-lg transition-colors">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold text-gray-800 dark:text-white">
+          <button 
+            onClick={() => navigate('/')}
+            className="text-xl font-bold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
             DevTools
-          </Link>
+          </button>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">

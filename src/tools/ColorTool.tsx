@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 interface Color {
   hex: string
@@ -19,6 +21,10 @@ const ColorTool = () => {
   const [colorFormat, setColorFormat] = useState<ColorFormat>('hex')
   const [inputColor, setInputColor] = useState('#3B82F6')
   const [copied, setCopied] = useState('')
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'Color Palette Generator'
+  })
 
   // Color conversion functions
   const hexToRgb = useCallback((hex: string): { r: number; g: number; b: number } => {
@@ -183,12 +189,20 @@ const ColorTool = () => {
     setInputColor(color)
     const newPalette = generatePalette(color, paletteType)
     setPalette(newPalette)
+    // Trigger share when a color palette is generated
+    if (newPalette.length > 1) {
+      triggerShare()
+    }
   }
 
   const handlePaletteTypeChange = (type: PaletteType) => {
     setPaletteType(type)
     const newPalette = generatePalette(baseColor, type)
     setPalette(newPalette)
+    // Trigger share when palette type is changed
+    if (newPalette.length > 1) {
+      triggerShare()
+    }
   }
 
   const formatColorValue = (color: Color, format: ColorFormat): string => {
@@ -473,6 +487,12 @@ const ColorTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="Color Palette Generator"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

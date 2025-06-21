@@ -1,5 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 type TimestampFormat = 'seconds' | 'milliseconds' | 'microseconds' | 'nanoseconds'
 type ConversionMode = 'toTimestamp' | 'fromTimestamp'
@@ -15,6 +17,10 @@ const TimestampTool = () => {
   const [currentTime, setCurrentTime] = useState(new Date())
   const [copied, setCopied] = useState('')
   const [error, setError] = useState('')
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'Timestamp Converter'
+  })
 
   // Update current time every second
   useEffect(() => {
@@ -90,6 +96,8 @@ const TimestampTool = () => {
 
       setResult(Object.entries(formats).map(([name, value]) => `${name}: ${value}`).join('\n'))
       setError('')
+      // Trigger share when timestamp is successfully converted
+      triggerShare()
     } catch (err) {
       setError('Failed to parse timestamp')
       setResult('')
@@ -146,6 +154,8 @@ const TimestampTool = () => {
 
       setResult(Object.entries(formats).map(([name, value]) => `${name}: ${value}`).join('\n'))
       setError('')
+      // Trigger share when date is successfully converted to timestamp
+      triggerShare()
     } catch (err) {
       setError('Failed to convert date to timestamp')
       setResult('')
@@ -504,6 +514,12 @@ const TimestampTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="Timestamp Converter"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

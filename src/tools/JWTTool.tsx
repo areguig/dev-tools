@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 interface DecodedToken {
   header: Record<string, unknown>
@@ -12,6 +14,10 @@ const JWTTool = () => {
   const [decodedToken, setDecodedToken] = useState<DecodedToken | null>(null)
   const [error, setError] = useState('')
   const [copied, setCopied] = useState<'header' | 'payload' | null>(null)
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'JWT Token Decoder'
+  })
 
   const base64UrlDecode = (str: string): string => {
     // Add padding if needed
@@ -54,6 +60,8 @@ const JWTTool = () => {
         signature: signaturePart
       })
       setError('')
+      // Trigger share when JWT is successfully decoded
+      triggerShare()
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Invalid JWT token')
       setDecodedToken(null)
@@ -323,6 +331,12 @@ const JWTTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="JWT Token Decoder"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

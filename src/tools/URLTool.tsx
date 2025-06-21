@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 type EncodingMode = 'url' | 'uri' | 'component'
 
@@ -10,6 +12,10 @@ const URLTool = () => {
   const [encodingType, setEncodingType] = useState<EncodingMode>('url')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'URL Encoder/Decoder'
+  })
 
   const encodeURL = useCallback((text: string, type: EncodingMode) => {
     try {
@@ -55,9 +61,17 @@ const URLTool = () => {
       if (mode === 'encode') {
         const encoded = encodeURL(text, encodingType)
         setOutput(encoded)
+        // Trigger share for substantial encoded URLs
+        if (encoded && encoded.length > 20) {
+          triggerShare()
+        }
       } else {
         const decoded = decodeURL(text)
         setOutput(decoded)
+        // Trigger share for substantial decoded URLs
+        if (decoded && decoded.length > 10) {
+          triggerShare()
+        }
       }
       setError('')
     } catch (err) {
@@ -352,6 +366,12 @@ const URLTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="URL Encoder/Decoder"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

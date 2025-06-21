@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 interface PasswordOptions {
   length: number
@@ -26,6 +28,10 @@ const PasswordTool = () => {
   const [strength, setStrength] = useState({ score: 0, label: '', color: '' })
   const [copied, setCopied] = useState(false)
   const [history, setHistory] = useState<string[]>([])
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'Password Generator'
+  })
 
   const characterSets = {
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -122,6 +128,11 @@ const PasswordTool = () => {
 
     // Add to history (keep last 5)
     setHistory(prev => [result, ...prev.slice(0, 4)])
+    
+    // Trigger share when password is generated successfully
+    if (result && !result.startsWith('Error:')) {
+      triggerShare()
+    }
   }, [options, calculateStrength])
 
   const copyToClipboard = async () => {
@@ -447,6 +458,12 @@ const PasswordTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="Password Generator"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

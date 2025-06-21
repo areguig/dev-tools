@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 type UUIDVersion = '1' | '4'
 type UUIDFormat = 'uppercase' | 'lowercase' | 'braces' | 'hyphens-removed'
@@ -10,6 +12,10 @@ const UUIDTool = () => {
   const [quantity, setQuantity] = useState(1)
   const [uuids, setUuids] = useState<string[]>([])
   const [copied, setCopied] = useState('')
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'UUID/GUID Generator'
+  })
 
   // Generate UUID v4 (random)
   const generateUUIDv4 = useCallback((): string => {
@@ -71,6 +77,10 @@ const UUIDTool = () => {
     
     setUuids(newUuids)
     setCopied('')
+    // Trigger share when UUIDs are generated
+    if (newUuids.length > 0) {
+      triggerShare()
+    }
   }, [version, format, quantity, generateUUIDv1, generateUUIDv4, formatUUID])
 
   const copyToClipboard = async (text: string, type: string) => {
@@ -391,6 +401,12 @@ const UUIDTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="UUID/GUID Generator"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

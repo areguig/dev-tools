@@ -1,5 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 type HashAlgorithm = 'MD5' | 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512'
 
@@ -12,6 +14,10 @@ const HashTool = () => {
   const [copied, setCopied] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'Hash Generator'
+  })
 
   const generateHash = useCallback(async (data: string | ArrayBuffer, algo: HashAlgorithm) => {
     const encoder = new TextEncoder()
@@ -64,6 +70,10 @@ const HashTool = () => {
     try {
       const hash = await generateHash(text, algorithm)
       setOutput(hash)
+      // Trigger share when hash is generated successfully
+      if (hash && hash.length > 10) {
+        triggerShare()
+      }
     } catch (error) {
       console.error('Hash generation failed:', error)
       setOutput('Error generating hash')
@@ -104,6 +114,10 @@ const HashTool = () => {
       const arrayBuffer = await file.arrayBuffer()
       const hash = await generateHash(arrayBuffer, algorithm)
       setOutput(hash)
+      // Trigger share when file hash is generated successfully
+      if (hash && hash.length > 10) {
+        triggerShare()
+      }
     } catch (error) {
       console.error('File hash generation failed:', error)
       setOutput('Error generating file hash')
@@ -391,6 +405,12 @@ const HashTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="Hash Generator"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

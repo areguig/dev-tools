@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 type QRCodeSize = '100' | '150' | '200' | '300' | '400' | '500'
 type QRCodeFormat = 'PNG' | 'JPG' | 'GIF' | 'SVG'
@@ -28,6 +30,10 @@ const QRCodeTool = () => {
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError] = useState('')
   const [history, setHistory] = useState<Array<{data: string, url: string, timestamp: Date}>>([])
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'QR Code Generator'
+  })
 
   const generateQRCode = useCallback(async () => {
     if (!input.trim()) {
@@ -62,6 +68,8 @@ const QRCodeTool = () => {
           { data: input.trim(), url, timestamp: new Date() },
           ...prev.slice(0, 9) // Keep last 10
         ])
+        // Trigger share when QR code is generated successfully
+        triggerShare()
       }
       img.onerror = () => {
         setError('Failed to generate QR code. Please check your input.')
@@ -433,6 +441,12 @@ const QRCodeTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="QR Code Generator"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

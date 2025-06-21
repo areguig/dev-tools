@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 interface RegexMatch {
   match: string
@@ -31,6 +33,10 @@ const RegexTool = () => {
   const [replacement, setReplacement] = useState('')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState('')
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'Regex Tester'
+  })
 
   const flagsString = useMemo(() => {
     let result = ''
@@ -88,6 +94,11 @@ const RegexTool = () => {
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Regex execution failed')
+    }
+    
+    // Trigger share when regex finds matches
+    if (results.length > 0) {
+      triggerShare()
     }
     
     return results
@@ -555,6 +566,12 @@ const RegexTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="Regex Tester"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }
