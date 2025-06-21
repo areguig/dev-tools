@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import SEOHead from '../components/SEOHead'
 
 type EncodingMode = 'url' | 'uri' | 'component'
 
