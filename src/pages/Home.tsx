@@ -1,11 +1,13 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useFavorites } from '../contexts/FavoritesContext'
+import { useHistory } from '../contexts/HistoryContext'
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false)
   const { favorites, toggleFavorite, isFavorite } = useFavorites()
+  const { recentTools, clearHistory } = useHistory()
   const toolCategories = [
     {
       title: 'Text Processing',
@@ -200,6 +202,42 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Recent Tools Section */}
+      {!searchQuery && !showFavoritesOnly && recentTools.length > 0 && (
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Recently Used
+            </h2>
+            <button
+              onClick={clearHistory}
+              className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+            >
+              Clear History
+            </button>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {recentTools.slice(0, 5).map((tool) => (
+              <Link
+                key={tool.path}
+                to={tool.path}
+                className="flex flex-col items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all group"
+              >
+                <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">
+                  {tool.icon}
+                </span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white text-center line-clamp-2">
+                  {tool.name}
+                </span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  {new Date(tool.timestamp).toLocaleDateString()}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* No Results Message */}
       {searchQuery && filteredCategories.length === 0 && (
