@@ -54,6 +54,16 @@ const Home = () => {
       ]
     },
     {
+      title: 'Developer Utilities',
+      description: 'Essential tools for software development',
+      tools: [
+        { name: 'UUID/GUID Generator', path: '/uuid', icon: '🆔' },
+        { name: 'HTML Entity Encoder', path: '/html-entity', icon: '🏷️' },
+        { name: 'Text Case Converter', path: '/text-case', icon: '📝' },
+        { name: 'Image to Base64 Converter', path: '/image-base64', icon: '🖼️' },
+      ]
+    },
+    {
       title: 'Comparison & Analysis',
       description: 'Compare and analyze text and files',
       tools: [

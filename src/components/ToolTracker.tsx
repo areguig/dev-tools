@@ -17,7 +17,11 @@ const TOOL_NAMES: { [key: string]: { name: string; icon: string } } = {
   '/lorem': { name: 'Lorem Ipsum Generator', icon: '📝' },
   '/color': { name: 'Color Palette Generator', icon: '🎨' },
   '/timestamp': { name: 'Timestamp Converter', icon: '⏰' },
-  '/regex': { name: 'Regex Tester', icon: '🔍' }
+  '/regex': { name: 'Regex Tester', icon: '🔍' },
+  '/uuid': { name: 'UUID/GUID Generator', icon: '🆔' },
+  '/html-entity': { name: 'HTML Entity Encoder', icon: '🏷️' },
+  '/text-case': { name: 'Text Case Converter', icon: '📝' },
+  '/image-base64': { name: 'Image to Base64 Converter', icon: '🖼️' }
 }
 
 const ToolTracker = () => {

@@ -16,6 +16,10 @@ import LoremTool from './tools/LoremTool'
 import ColorTool from './tools/ColorTool'
 import TimestampTool from './tools/TimestampTool'
 import RegexTool from './tools/RegexTool'
+import UUIDTool from './tools/UUIDTool'
+import HTMLEntityTool from './tools/HTMLEntityTool'
+import TextCaseTool from './tools/TextCaseTool'
+import ImageBase64Tool from './tools/ImageBase64Tool'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { FavoritesProvider } from './contexts/FavoritesContext'
 import { HistoryProvider } from './contexts/HistoryContext'
@@ -44,6 +48,10 @@ function App() {
                 <Route path="/color" element={<ColorTool />} />
                 <Route path="/timestamp" element={<TimestampTool />} />
                 <Route path="/regex" element={<RegexTool />} />
+                <Route path="/uuid" element={<UUIDTool />} />
+                <Route path="/html-entity" element={<HTMLEntityTool />} />
+                <Route path="/text-case" element={<TextCaseTool />} />
+                <Route path="/image-base64" element={<ImageBase64Tool />} />
               </Routes>
             </Layout>
           </Router>
