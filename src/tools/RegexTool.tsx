@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import SEOHead from '../components/SEOHead'
 import ShareWidget from '../components/ShareWidget'
 import { useShareTrigger } from '../hooks/useShareTrigger'
@@ -61,7 +61,6 @@ const RegexTool = () => {
   const matches = useMemo(() => {
     if (!regexObject || !testString) return []
     
-    setError('')
     const results: RegexMatch[] = []
     
     try {
@@ -108,11 +107,23 @@ const RegexTool = () => {
     if (!pattern) return true
     try {
       new RegExp(pattern, flagsString)
-      setError('')
       return true
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Invalid regex pattern')
       return false
+    }
+  }, [pattern, flagsString])
+
+  // Handle error state separately from regex validation
+  useEffect(() => {
+    if (!pattern) {
+      setError('')
+      return
+    }
+    try {
+      new RegExp(pattern, flagsString)
+      setError('')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Invalid regex pattern')
     }
   }, [pattern, flagsString])
 

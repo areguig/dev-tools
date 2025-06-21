@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 
 interface UseShareTriggerOptions {
   toolName: string
@@ -19,6 +19,7 @@ export const useShareTrigger = ({
   cooldownPeriod = 30000 // 30 seconds cooldown
 }: UseShareTriggerOptions): ShareTriggerState => {
   const [isVisible, setIsVisible] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const storageKey = `share-cooldown-${toolName.replace(/\s+/g, '-').toLowerCase()}`
 
@@ -37,16 +38,34 @@ export const useShareTrigger = ({
     const now = Date.now()
     const lastShownTime = parseInt(localStorage.getItem(storageKey) || '0', 10)
     
+    // Clear any existing timeout to prevent accumulation
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    
     // Check if enough time has passed since last share
     if (now - lastShownTime > cooldownPeriod) {
       // Show share widget after delay
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setIsVisible(true)
+        timeoutRef.current = null
       }, triggerDelay)
     }
   }, [storageKey, cooldownPeriod, triggerDelay])
 
-  // Hook is now simplified - no need to track lastShown in state
+  // Cleanup timeout on unmount
+  const cleanup = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+  }, [])
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return cleanup
+  }, [cleanup])
 
   return {
     isVisible,
