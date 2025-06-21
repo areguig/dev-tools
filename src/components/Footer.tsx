@@ -93,7 +93,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="text-xs text-gray-500 dark:text-gray-500 text-center">
-            © 2024 Developer Tools Suite • Built with ❤️ by @areguig & Claude Code
+            © 2025 Developer Tools Suite • Built with ❤️ by @areguig & Claude Code
           </div>
         </div>
       </div>

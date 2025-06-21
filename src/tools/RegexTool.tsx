@@ -492,7 +492,7 @@ const RegexTool = () => {
               <button
                 onClick={() => loadExample(
                   '(\\d{4})-(\\d{2})-(\\d{2})',
-                  'Today is 2024-01-15 and tomorrow is 2024-01-16.',
+                  'Today is 2025-01-15 and tomorrow is 2025-01-16.',
                   { global: true }
                 )}
                 className="p-3 text-left bg-white dark:bg-gray-800 rounded border hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"

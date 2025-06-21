@@ -413,12 +413,12 @@ const HTMLEntityTool = () => {
               </button>
               
               <button
-                onClick={() => handleInputChange('Copyright © 2024 • "Company & Co." ™')}
+                onClick={() => handleInputChange('Copyright © 2025 • "Company & Co." ™')}
                 className="p-3 text-left bg-white dark:bg-gray-800 rounded border hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
                 <div className="font-medium text-gray-900 dark:text-white text-sm">Special Characters</div>
                 <div className="text-gray-600 dark:text-gray-400 text-xs mt-1 font-mono">
-                  Copyright © 2024 • "Company & Co." ™
+                  Copyright © 2025 • "Company & Co." ™
                 </div>
               </button>
 

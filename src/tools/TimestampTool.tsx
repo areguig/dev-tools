@@ -453,15 +453,15 @@ const TimestampTool = () => {
               <button
                 onClick={() => {
                   setMode('toTimestamp')
-                  setDateInput('2024-01-01')
+                  setDateInput('2025-01-01')
                   setTimeInput('00:00:00')
                   setTimezoneInput('UTC')
                 }}
                 className="p-3 text-left bg-white dark:bg-gray-800 rounded border hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
-                <div className="font-medium text-gray-900 dark:text-white text-sm">New Year 2024</div>
+                <div className="font-medium text-gray-900 dark:text-white text-sm">New Year 2025</div>
                 <div className="text-gray-600 dark:text-gray-400 text-xs mt-1">
-                  2024-01-01 00:00:00 UTC
+                  2025-01-01 00:00:00 UTC
                 </div>
               </button>
 

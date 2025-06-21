@@ -1,6 +1,6 @@
 # 🛠️ Developer Tools Suite
 
-A comprehensive collection of **27 professional developer utilities** running entirely in your browser. No backend required, no data leaves your device.
+A comprehensive collection of **31 professional developer utilities** running entirely in your browser. No backend required, no data leaves your device.
 
 ## 🌐 Live Application
 
@@ -8,7 +8,7 @@ A comprehensive collection of **27 professional developer utilities** running en
 
 ## ✨ Features
 
-### 🔧 **27 Professional Tools Across 8 Categories:**
+### 🔧 **31 Professional Tools Across 9 Categories:**
 
 1. **Text Processing** (3 tools)
    - Base64 Encoder/Decoder
@@ -20,13 +20,16 @@ A comprehensive collection of **27 professional developer utilities** running en
    - XML Formatter & Validator
    - YAML Validator
 
-3. **Code Formatting** (2 tools)
+3. **Code Formatting** (4 tools)
    - CSS Formatter & Minifier
    - SQL Formatter & Compressor
+   - Markdown to HTML Converter
+   - JavaScript/TypeScript Formatter
 
-4. **Security & Hashing** (2 tools)
+4. **Security & Hashing** (3 tools)
    - Hash Generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512)
    - Password Generator with Strength Analysis
+   - JWT Token Generator with HMAC-SHA256
 
 5. **URL & QR Tools** (3 tools)
    - URL Shortener with QR Codes
@@ -38,11 +41,12 @@ A comprehensive collection of **27 professional developer utilities** running en
    - Timestamp Converter
    - Regex Tester
 
-7. **Developer Utilities** (4 tools)
+7. **Developer Utilities** (5 tools)
    - UUID/GUID Generator
    - HTML Entity Encoder/Decoder
    - Text Case Converter (12 formats)
    - Image to Base64 Converter
+   - Environment Variables Manager
 
 8. **Advanced Tools** (2 tools)
    - API Testing Tool (Full REST Client)
@@ -118,12 +122,13 @@ Have an idea for a new tool? [Start a discussion](https://github.com/areguig/dev
 
 ## 📊 Project Statistics
 
-- **Total Tools**: 27 comprehensive utilities
-- **Bundle Size**: ~509KB (optimized)
+- **Total Tools**: 31 comprehensive utilities
+- **Bundle Size**: ~558KB (optimized)
 - **Load Time**: <3 seconds
 - **Browser Support**: Modern browsers (ES2020+)
 - **Mobile Ready**: 100% responsive
 - **Offline Capable**: No external dependencies for core functionality
+- **Open Source**: Full GitHub integration with contribution guidelines
 
 ## 🔒 Privacy & Security
 
@@ -135,14 +140,15 @@ Have an idea for a new tool? [Start a discussion](https://github.com/areguig/dev
 ## 📋 Roadmap
 
 ### Potential Future Enhancements
-- [ ] JavaScript/TypeScript formatter
-- [ ] JWT token generator with signing
-- [ ] GraphQL query formatter
-- [ ] Environment variables manager
+- [ ] GraphQL query formatter and validator
 - [ ] Advanced regex builder with explanations
+- [ ] Python/Go/Rust code formatters
 - [ ] Custom themes and layouts
 - [ ] Offline PWA capabilities
-- [ ] Keyboard shortcuts
+- [ ] Keyboard shortcuts system
+- [ ] Plugin architecture for community tools
+- [ ] Advanced search with filtering
+- [ ] Import/export settings
 
 ## 📄 License
 
