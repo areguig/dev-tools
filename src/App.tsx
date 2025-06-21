@@ -26,6 +26,8 @@ import APITestTool from './tools/APITestTool'
 import CronBuilderTool from './tools/CronBuilderTool'
 import MarkdownTool from './tools/MarkdownTool'
 import JavaScriptFormatterTool from './tools/JavaScriptFormatterTool'
+import JWTGeneratorTool from './tools/JWTGeneratorTool'
+import EnvVarsTool from './tools/EnvVarsTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { FavoritesProvider } from './contexts/FavoritesContext'
 import { HistoryProvider } from './contexts/HistoryContext'
@@ -64,6 +66,8 @@ function App() {
                 <Route path="/cron-builder" element={<CronBuilderTool />} />
                 <Route path="/markdown" element={<MarkdownTool />} />
                 <Route path="/js-formatter" element={<JavaScriptFormatterTool />} />
+                <Route path="/jwt-generator" element={<JWTGeneratorTool />} />
+                <Route path="/env-vars" element={<EnvVarsTool />} />
               </Routes>
             </Layout>
           </Router>

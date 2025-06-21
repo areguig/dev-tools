@@ -43,6 +43,7 @@ const Home = () => {
       tools: [
         { name: 'Hash Generator', path: '/hash', icon: '🔑' },
         { name: 'Password Generator', path: '/password', icon: '🛡️' },
+        { name: 'JWT Token Generator', path: '/jwt-generator', icon: '🔐' },
       ]
     },
     {
@@ -71,6 +72,7 @@ const Home = () => {
         { name: 'HTML Entity Encoder', path: '/html-entity', icon: '🏷️' },
         { name: 'Text Case Converter', path: '/text-case', icon: '📝' },
         { name: 'Image to Base64 Converter', path: '/image-base64', icon: '🖼️' },
+        { name: 'Environment Variables Manager', path: '/env-vars', icon: '⚙️' },
       ]
     },
     {

@@ -27,7 +27,9 @@ const TOOL_NAMES: { [key: string]: { name: string; icon: string } } = {
   '/api-test': { name: 'API Testing Tool', icon: '🔌' },
   '/cron-builder': { name: 'Cron Expression Builder', icon: '⏰' },
   '/markdown': { name: 'Markdown to HTML Converter', icon: '📄' },
-  '/js-formatter': { name: 'JavaScript Formatter', icon: '📜' }
+  '/js-formatter': { name: 'JavaScript Formatter', icon: '📜' },
+  '/jwt-generator': { name: 'JWT Token Generator', icon: '🔑' },
+  '/env-vars': { name: 'Environment Variables Manager', icon: '⚙️' }
 }
 
 const ToolTracker = () => {
