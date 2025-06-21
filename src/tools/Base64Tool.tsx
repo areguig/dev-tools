@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 const Base64Tool = () => {
   const [input, setInput] = useState('')
@@ -7,28 +9,40 @@ const Base64Tool = () => {
   const [mode, setMode] = useState<'encode' | 'decode'>('encode')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'Base64 Encoder/Decoder'
+  })
 
   const handleEncode = useCallback((text: string) => {
     try {
       const encoded = btoa(unescape(encodeURIComponent(text)))
       setOutput(encoded)
       setError('')
+      // Trigger share widget when encoding is successful and output is substantial
+      if (encoded.length > 20) {
+        triggerShare()
+      }
     } catch (err) {
       setError('Failed to encode: Invalid input')
       setOutput('')
     }
-  }, [])
+  }, [triggerShare])
 
   const handleDecode = useCallback((text: string) => {
     try {
       const decoded = decodeURIComponent(escape(atob(text)))
       setOutput(decoded)
       setError('')
+      // Trigger share widget when decoding is successful and output is substantial
+      if (decoded.length > 10) {
+        triggerShare()
+      }
     } catch (err) {
       setError('Failed to decode: Invalid Base64 string')
       setOutput('')
     }
-  }, [])
+  }, [triggerShare])
 
   const handleInputChange = (value: string) => {
     setInput(value)
@@ -191,6 +205,12 @@ const Base64Tool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="Base64 Encoder/Decoder"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

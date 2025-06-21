@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react'
 import SEOHead from '../components/SEOHead'
+import ShareWidget from '../components/ShareWidget'
+import { useShareTrigger } from '../hooks/useShareTrigger'
 
 const JSONTool = () => {
   const [input, setInput] = useState('')
@@ -8,6 +10,10 @@ const JSONTool = () => {
   const [indentSize, setIndentSize] = useState(2)
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
+  
+  const { isVisible: shareVisible, hideShare, triggerShare } = useShareTrigger({
+    toolName: 'JSON Formatter & Validator'
+  })
 
   const formatJSON = useCallback((text: string, indent: number) => {
     try {
@@ -38,16 +44,24 @@ const JSONTool = () => {
       if (mode === 'format') {
         const formatted = formatJSON(text, indentSize)
         setOutput(formatted)
+        // Trigger share after successful formatting of substantial JSON
+        if (formatted.length > 50) {
+          triggerShare()
+        }
       } else {
         const minified = minifyJSON(text)
         setOutput(minified)
+        // Trigger share after successful minification
+        if (minified.length > 20) {
+          triggerShare()
+        }
       }
       setError('')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to process JSON')
       setOutput('')
     }
-  }, [mode, indentSize, formatJSON, minifyJSON])
+  }, [mode, indentSize, formatJSON, minifyJSON, triggerShare])
 
   const handleInputChange = (value: string) => {
     setInput(value)
@@ -279,6 +293,12 @@ const JSONTool = () => {
           </div>
         </div>
       </div>
+      
+      <ShareWidget
+        toolName="JSON Formatter & Validator"
+        isVisible={shareVisible}
+        onClose={hideShare}
+      />
     </div>
   )
 }

@@ -31,13 +31,15 @@ import EnvVarsTool from './tools/EnvVarsTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { FavoritesProvider } from './contexts/FavoritesContext'
 import { HistoryProvider } from './contexts/HistoryContext'
+import { ShareAnalyticsProvider } from './contexts/ShareAnalyticsContext'
 
 function App() {
   return (
     <ThemeProvider>
       <FavoritesProvider>
         <HistoryProvider>
-          <Router basename="/dev-tools">
+          <ShareAnalyticsProvider>
+            <Router basename="/dev-tools">
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -70,7 +72,8 @@ function App() {
                 <Route path="/env-vars" element={<EnvVarsTool />} />
               </Routes>
             </Layout>
-          </Router>
+            </Router>
+          </ShareAnalyticsProvider>
         </HistoryProvider>
       </FavoritesProvider>
     </ThemeProvider>
