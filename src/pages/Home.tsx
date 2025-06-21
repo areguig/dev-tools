@@ -231,7 +231,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Recent Tools Section */}
       {!searchQuery && !showFavoritesOnly && recentTools.length > 0 && (
@@ -341,7 +341,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 
