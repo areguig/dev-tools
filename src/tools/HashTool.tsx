@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef } from 'react'
+import SEOHead from '../components/SEOHead'
 
 type HashAlgorithm = 'MD5' | 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512'
 
@@ -154,6 +155,13 @@ const HashTool = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <SEOHead
+        title="Hash Generator - MD5, SHA-1, SHA-256, SHA-384, SHA-512"
+        description="Generate cryptographic hashes for text and files using MD5, SHA-1, SHA-256, SHA-384, and SHA-512 algorithms. Secure hash calculator that works locally in your browser for maximum privacy."
+        keywords="hash generator, md5 hash, sha256 hash, sha1 hash, sha512 hash, cryptographic hash, file hash calculator, checksum generator"
+        toolName="Hash Generator"
+        category="Security & Hashing"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           Hash Generator

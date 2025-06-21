@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import SEOHead from '../components/SEOHead'
 
 type QRCodeSize = '100' | '150' | '200' | '300' | '400' | '500'
 type QRCodeFormat = 'PNG' | 'JPG' | 'GIF' | 'SVG'
@@ -122,6 +123,13 @@ const QRCodeTool = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <SEOHead
+        title="QR Code Generator"
+        description="Generate QR codes for text, URLs, WiFi, and more. Customizable size, error correction, and download options. Create QR codes for sharing links, contact info, and data."
+        keywords="qr code generator, qr code creator, generate qr code, qr code maker, barcode generator"
+        toolName="QR Code Generator"
+        category="URL & QR Tools"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           QR Code Generator

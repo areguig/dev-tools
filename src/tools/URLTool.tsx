@@ -130,6 +130,13 @@ const URLTool = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
+      <SEOHead
+        title="URL Encoder/Decoder"
+        description="Encode and decode URLs, URIs, and URL components. Support for different encoding types including URL encoding, URI encoding, and component encoding. Essential web development tool."
+        keywords="url encoder, url decoder, uri encoder, percent encoding, url encoding tool, web development"
+        toolName="URL Encoder/Decoder"
+        category="Text Processing"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           URL Encoder/Decoder

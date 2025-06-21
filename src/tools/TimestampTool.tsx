@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
+import SEOHead from '../components/SEOHead'
 
 type TimestampFormat = 'seconds' | 'milliseconds' | 'microseconds' | 'nanoseconds'
 type ConversionMode = 'toTimestamp' | 'fromTimestamp'
@@ -198,6 +199,13 @@ const TimestampTool = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <SEOHead
+        title="Timestamp Converter"
+        description="Convert between Unix timestamps and human-readable dates. Support for multiple timezones and date formats. Essential tool for developers working with time-based data."
+        keywords="timestamp converter, unix timestamp, epoch converter, date converter, timezone converter"
+        toolName="Timestamp Converter"
+        category="Developer Utilities"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           Timestamp Converter

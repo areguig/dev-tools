@@ -125,6 +125,13 @@ const JWTTool = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
+      <SEOHead
+        title="JWT Token Decoder"
+        description="Decode and inspect JWT (JSON Web Token) headers and payloads. View token claims, expiration times, and understand JWT structure. Essential tool for developers working with authentication tokens."
+        keywords="jwt decoder, jwt parser, json web token decoder, jwt inspector, decode jwt token, jwt analyzer"
+        toolName="JWT Token Decoder"
+        category="Security & Hashing"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           JWT Token Decoder

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import SEOHead from '../components/SEOHead'
 
 interface RegexMatch {
   match: string
@@ -188,6 +189,13 @@ const RegexTool = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
+      <SEOHead
+        title="Regex Tester & Pattern Validator"
+        description="Test and validate regular expressions with real-time matching. Interactive regex tester with match highlighting, capture groups, and pattern explanation. Perfect for developers debugging regex patterns."
+        keywords="regex tester, regular expression tester, regex validator, pattern matcher, regex debugger, javascript regex"
+        toolName="Regex Tester & Pattern Validator"
+        category="Developer Utilities"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           Regex Tester

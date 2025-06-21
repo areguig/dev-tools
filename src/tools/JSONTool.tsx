@@ -104,6 +104,13 @@ const JSONTool = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
+      <SEOHead
+        title="JSON Formatter & Validator"
+        description="Free online JSON formatter, validator and beautifier tool. Format, minify, and validate JSON data with syntax highlighting. Perfect for developers working with APIs and JSON configuration files."
+        keywords="json formatter, json validator, json beautifier, json minifier, format json online, validate json, json tool"
+        toolName="JSON Formatter & Validator"
+        category="Data Formatting"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           JSON Formatter & Validator

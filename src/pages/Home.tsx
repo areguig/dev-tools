@@ -173,13 +173,13 @@ const Home = () => {
   }, [filteredCategories])
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="text-center mb-12">
+    <main className="max-w-6xl mx-auto">
+      <header className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Developer Tools
+          Developer Tools Suite - 31 Professional Utilities
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-          Essential utilities for developers - all running locally in your browser
+          Comprehensive collection of free developer tools - Base64 encoder, JSON formatter, JWT generator, hash calculator, regex tester and more. All running locally in your browser with complete privacy.
         </p>
         
         {/* Search Bar */}

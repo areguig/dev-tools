@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import SEOHead from '../components/SEOHead'
 
 const Base64Tool = () => {
   const [input, setInput] = useState('')
@@ -81,6 +82,13 @@ const Base64Tool = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <SEOHead
+        title="Base64 Encoder/Decoder"
+        description="Free online Base64 encoder and decoder tool. Encode text to Base64 or decode Base64 strings back to text. Supports UTF-8 encoding including emojis and special characters. Secure, fast, and runs locally in your browser."
+        keywords="base64 encoder, base64 decoder, base64 tool, encode decode base64, utf-8 base64, online base64 converter"
+        toolName="Base64 Encoder/Decoder"
+        category="Text Processing"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           Base64 Encoder/Decoder

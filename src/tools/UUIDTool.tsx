@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import SEOHead from '../components/SEOHead'
 
 type UUIDVersion = '1' | '4'
 type UUIDFormat = 'uppercase' | 'lowercase' | 'braces' | 'hyphens-removed'
@@ -142,6 +143,13 @@ const UUIDTool = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <SEOHead
+        title="UUID/GUID Generator"
+        description="Generate UUID (Universally Unique Identifier) and GUID values. Support for UUID v1 and v4 with multiple format options. Bulk generation and validation features for developers."
+        keywords="uuid generator, guid generator, unique id generator, uuid v4, uuid v1, identifier generator"
+        toolName="UUID/GUID Generator"
+        category="Developer Utilities"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           UUID/GUID Generator

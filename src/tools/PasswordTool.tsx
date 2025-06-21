@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import SEOHead from '../components/SEOHead'
 
 interface PasswordOptions {
   length: number
@@ -156,6 +157,13 @@ const PasswordTool = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <SEOHead
+        title="Password Generator - Strong & Secure"
+        description="Generate strong, secure passwords with customizable options. Password strength analyzer, character sets, and preset templates. Create secure passwords for your accounts and applications."
+        keywords="password generator, strong password generator, secure password, random password, password strength"
+        toolName="Password Generator"
+        category="Security & Hashing"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           Password Generator

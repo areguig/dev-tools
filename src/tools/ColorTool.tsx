@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import SEOHead from '../components/SEOHead'
 
 interface Color {
   hex: string
@@ -249,6 +250,13 @@ const ColorTool = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
+      <SEOHead
+        title="Color Palette Generator"
+        description="Generate color palettes using color theory algorithms. Create complementary, triadic, analogous, and other color harmonies. Perfect for designers and developers working with colors."
+        keywords="color palette generator, color harmony, complementary colors, color theory, design colors"
+        toolName="Color Palette Generator"
+        category="Design & Visual"
+      />
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
           Color Palette Generator
