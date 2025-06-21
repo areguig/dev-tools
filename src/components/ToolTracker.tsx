@@ -25,7 +25,9 @@ const TOOL_NAMES: { [key: string]: { name: string; icon: string } } = {
   '/css-formatter': { name: 'CSS Formatter', icon: '🎨' },
   '/sql-formatter': { name: 'SQL Formatter', icon: '🗃️' },
   '/api-test': { name: 'API Testing Tool', icon: '🔌' },
-  '/cron-builder': { name: 'Cron Expression Builder', icon: '⏰' }
+  '/cron-builder': { name: 'Cron Expression Builder', icon: '⏰' },
+  '/markdown': { name: 'Markdown to HTML Converter', icon: '📄' },
+  '/js-formatter': { name: 'JavaScript Formatter', icon: '📜' }
 }
 
 const ToolTracker = () => {

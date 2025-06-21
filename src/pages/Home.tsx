@@ -33,6 +33,8 @@ const Home = () => {
       tools: [
         { name: 'CSS Formatter', path: '/css-formatter', icon: '🎨' },
         { name: 'SQL Formatter', path: '/sql-formatter', icon: '🗃️' },
+        { name: 'Markdown to HTML Converter', path: '/markdown', icon: '📄' },
+        { name: 'JavaScript Formatter', path: '/js-formatter', icon: '📜' },
       ]
     },
     {

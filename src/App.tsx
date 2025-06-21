@@ -24,6 +24,8 @@ import CSSFormatterTool from './tools/CSSFormatterTool'
 import SQLFormatterTool from './tools/SQLFormatterTool'
 import APITestTool from './tools/APITestTool'
 import CronBuilderTool from './tools/CronBuilderTool'
+import MarkdownTool from './tools/MarkdownTool'
+import JavaScriptFormatterTool from './tools/JavaScriptFormatterTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { FavoritesProvider } from './contexts/FavoritesContext'
 import { HistoryProvider } from './contexts/HistoryContext'
@@ -60,6 +62,8 @@ function App() {
                 <Route path="/sql-formatter" element={<SQLFormatterTool />} />
                 <Route path="/api-test" element={<APITestTool />} />
                 <Route path="/cron-builder" element={<CronBuilderTool />} />
+                <Route path="/markdown" element={<MarkdownTool />} />
+                <Route path="/js-formatter" element={<JavaScriptFormatterTool />} />
               </Routes>
             </Layout>
           </Router>
