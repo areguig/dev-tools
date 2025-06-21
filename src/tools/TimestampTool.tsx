@@ -102,7 +102,7 @@ const TimestampTool = () => {
       setError('Failed to parse timestamp')
       setResult('')
     }
-  }, [timestampInput, timestampFormat, parseTimestamp])
+  }, [timestampInput, timestampFormat, parseTimestamp, triggerShare])
 
   const convertToTimestamp = useCallback(() => {
     if (!dateInput.trim()) {
@@ -160,7 +160,7 @@ const TimestampTool = () => {
       setError('Failed to convert date to timestamp')
       setResult('')
     }
-  }, [dateInput, timeInput, timezoneInput])
+  }, [dateInput, timeInput, timezoneInput, triggerShare])
 
   const handleConvert = () => {
     if (mode === 'fromTimestamp') {

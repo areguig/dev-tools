@@ -109,7 +109,7 @@ const Home = () => {
     
     // Filter by favorites first if requested
     if (showFavoritesOnly) {
-      const favoriteTools = allTools.filter(tool => isFavorite(tool.path))
+      const favoriteTools = allTools.filter(tool => favorites.includes(tool.path))
       const favoritesMap = new Map()
       
       favoriteTools.forEach(tool => {
@@ -138,7 +138,7 @@ const Home = () => {
 
     const query = searchQuery.toLowerCase()
     const toolsToFilter = showFavoritesOnly 
-      ? allTools.filter(tool => isFavorite(tool.path))
+      ? allTools.filter(tool => favorites.includes(tool.path))
       : allTools
       
     const matchingTools = toolsToFilter.filter(tool => 
@@ -166,7 +166,7 @@ const Home = () => {
     })
 
     return Array.from(categoriesMap.values())
-  }, [searchQuery, allTools, showFavoritesOnly, isFavorite])
+  }, [searchQuery, allTools, showFavoritesOnly, favorites])
 
   const searchResultsCount = useMemo(() => {
     return filteredCategories.reduce((count, category) => count + category.tools.length, 0)

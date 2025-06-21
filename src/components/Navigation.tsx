@@ -24,7 +24,6 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <button 
             onClick={() => {
-              console.log('DevTools clicked, forcing navigation to home')
               // Force a full navigation to home
               window.location.href = '/dev-tools/'
             }}

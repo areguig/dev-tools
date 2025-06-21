@@ -37,9 +37,6 @@ export const ShareAnalyticsProvider = ({ children }: ShareAnalyticsProviderProps
     }
     
     localStorage.setItem('share-analytics', JSON.stringify(existingShares))
-
-    // Log for development (remove in production if needed)
-    console.log('Share tracked:', shareEvent)
   }
 
   const getShareStats = (): ShareEvent[] => {
