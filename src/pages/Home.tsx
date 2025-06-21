@@ -38,6 +38,15 @@ const Home = () => {
       ]
     },
     {
+      title: 'Design & Visual',
+      description: 'Color tools and visual utilities',
+      tools: [
+        { name: 'Color Palette Generator', path: '/color', icon: '🎨' },
+        { name: 'Timestamp Converter', path: '/timestamp', icon: '⏰' },
+        { name: 'Regex Tester', path: '/regex', icon: '🔍' },
+      ]
+    },
+    {
       title: 'Comparison & Analysis',
       description: 'Compare and analyze text and files',
       tools: [

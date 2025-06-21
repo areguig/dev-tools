@@ -13,6 +13,9 @@ import PasswordTool from './tools/PasswordTool'
 import URLShortenerTool from './tools/URLShortenerTool'
 import QRCodeTool from './tools/QRCodeTool'
 import LoremTool from './tools/LoremTool'
+import ColorTool from './tools/ColorTool'
+import TimestampTool from './tools/TimestampTool'
+import RegexTool from './tools/RegexTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {
@@ -34,6 +37,9 @@ function App() {
             <Route path="/url-shortener" element={<URLShortenerTool />} />
             <Route path="/qr-code" element={<QRCodeTool />} />
             <Route path="/lorem" element={<LoremTool />} />
+            <Route path="/color" element={<ColorTool />} />
+            <Route path="/timestamp" element={<TimestampTool />} />
+            <Route path="/regex" element={<RegexTool />} />
           </Routes>
         </Layout>
       </Router>
