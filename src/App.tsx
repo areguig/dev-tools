@@ -42,7 +42,7 @@ function App() {
             <Router basename="/dev-tools">
             <Layout>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home key="home" />} />
                 <Route path="/base64" element={<Base64Tool />} />
                 <Route path="/jwt" element={<JWTTool />} />
                 <Route path="/json" element={<JSONTool />} />

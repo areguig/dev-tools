@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
-  const navigate = useNavigate()
 
   const tools = [
     { name: 'Base64', path: '/base64' },
@@ -24,7 +23,11 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <button 
-            onClick={() => navigate('/')}
+            onClick={() => {
+              console.log('DevTools clicked, forcing navigation to home')
+              // Force a full navigation to home
+              window.location.href = '/dev-tools/'
+            }}
             className="text-xl font-bold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             DevTools
