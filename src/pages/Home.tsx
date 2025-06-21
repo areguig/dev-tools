@@ -28,6 +28,14 @@ const Home = () => {
       ]
     },
     {
+      title: 'Code Formatting',
+      description: 'Format and beautify code for better readability',
+      tools: [
+        { name: 'CSS Formatter', path: '/css-formatter', icon: '🎨' },
+        { name: 'SQL Formatter', path: '/sql-formatter', icon: '🗃️' },
+      ]
+    },
+    {
       title: 'Security & Hashing',
       description: 'Generate hashes and secure passwords',
       tools: [
@@ -61,6 +69,14 @@ const Home = () => {
         { name: 'HTML Entity Encoder', path: '/html-entity', icon: '🏷️' },
         { name: 'Text Case Converter', path: '/text-case', icon: '📝' },
         { name: 'Image to Base64 Converter', path: '/image-base64', icon: '🖼️' },
+      ]
+    },
+    {
+      title: 'Advanced Tools',
+      description: 'Professional development and testing utilities',
+      tools: [
+        { name: 'API Testing Tool', path: '/api-test', icon: '🔌' },
+        { name: 'Cron Expression Builder', path: '/cron-builder', icon: '⏰' },
       ]
     },
     {

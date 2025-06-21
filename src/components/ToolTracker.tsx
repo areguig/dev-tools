@@ -21,7 +21,11 @@ const TOOL_NAMES: { [key: string]: { name: string; icon: string } } = {
   '/uuid': { name: 'UUID/GUID Generator', icon: '🆔' },
   '/html-entity': { name: 'HTML Entity Encoder', icon: '🏷️' },
   '/text-case': { name: 'Text Case Converter', icon: '📝' },
-  '/image-base64': { name: 'Image to Base64 Converter', icon: '🖼️' }
+  '/image-base64': { name: 'Image to Base64 Converter', icon: '🖼️' },
+  '/css-formatter': { name: 'CSS Formatter', icon: '🎨' },
+  '/sql-formatter': { name: 'SQL Formatter', icon: '🗃️' },
+  '/api-test': { name: 'API Testing Tool', icon: '🔌' },
+  '/cron-builder': { name: 'Cron Expression Builder', icon: '⏰' }
 }
 
 const ToolTracker = () => {

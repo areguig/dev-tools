@@ -20,6 +20,10 @@ import UUIDTool from './tools/UUIDTool'
 import HTMLEntityTool from './tools/HTMLEntityTool'
 import TextCaseTool from './tools/TextCaseTool'
 import ImageBase64Tool from './tools/ImageBase64Tool'
+import CSSFormatterTool from './tools/CSSFormatterTool'
+import SQLFormatterTool from './tools/SQLFormatterTool'
+import APITestTool from './tools/APITestTool'
+import CronBuilderTool from './tools/CronBuilderTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { FavoritesProvider } from './contexts/FavoritesContext'
 import { HistoryProvider } from './contexts/HistoryContext'
@@ -52,6 +56,10 @@ function App() {
                 <Route path="/html-entity" element={<HTMLEntityTool />} />
                 <Route path="/text-case" element={<TextCaseTool />} />
                 <Route path="/image-base64" element={<ImageBase64Tool />} />
+                <Route path="/css-formatter" element={<CSSFormatterTool />} />
+                <Route path="/sql-formatter" element={<SQLFormatterTool />} />
+                <Route path="/api-test" element={<APITestTool />} />
+                <Route path="/cron-builder" element={<CronBuilderTool />} />
               </Routes>
             </Layout>
           </Router>
