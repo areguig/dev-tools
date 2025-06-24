@@ -1,123 +1,35 @@
 import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useFavorites } from '../contexts/FavoritesContext'
 import { useHistory } from '../contexts/HistoryContext'
+import { useEnhancedSearch } from '../hooks/useEnhancedSearch'
+import EnhancedSearch from '../components/EnhancedSearch'
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState('')
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false)
   const { favorites, toggleFavorite, isFavorite } = useFavorites()
   const { recentTools, clearHistory } = useHistory()
-  const toolCategories = [
-    {
-      title: 'Text Processing',
-      description: 'Tools for encoding, decoding, and formatting text',
-      tools: [
-        { name: 'Base64 Encoder/Decoder', path: '/base64', icon: '🔤' },
-        { name: 'URL Encoder/Decoder', path: '/url', icon: '🔗' },
-        { name: 'JWT Token Decoder', path: '/jwt', icon: '🔐' },
-      ]
-    },
-    {
-      title: 'Data Formatting',
-      description: 'Format and validate structured data',
-      tools: [
-        { name: 'JSON Formatter', path: '/json', icon: '📋' },
-        { name: 'XML Formatter', path: '/xml', icon: '📄' },
-        { name: 'YAML Validator', path: '/yaml', icon: '📝' },
-      ]
-    },
-    {
-      title: 'Code Formatting',
-      description: 'Format and beautify code for better readability',
-      tools: [
-        { name: 'CSS Formatter', path: '/css-formatter', icon: '🎨' },
-        { name: 'SQL Formatter', path: '/sql-formatter', icon: '🗃️' },
-        { name: 'Markdown to HTML Converter', path: '/markdown', icon: '📄' },
-        { name: 'JavaScript Formatter', path: '/js-formatter', icon: '📜' },
-      ]
-    },
-    {
-      title: 'Security & Hashing',
-      description: 'Generate hashes and secure passwords',
-      tools: [
-        { name: 'Hash Generator', path: '/hash', icon: '🔑' },
-        { name: 'Password Generator', path: '/password', icon: '🛡️' },
-        { name: 'JWT Token Generator', path: '/jwt-generator', icon: '🔐' },
-      ]
-    },
-    {
-      title: 'URL & QR Tools',
-      description: 'Shorten URLs and generate QR codes',
-      tools: [
-        { name: 'URL Shortener', path: '/url-shortener', icon: '🔗' },
-        { name: 'QR Code Generator', path: '/qr-code', icon: '📱' },
-        { name: 'Lorem Ipsum Generator', path: '/lorem', icon: '📝' },
-      ]
-    },
-    {
-      title: 'Design & Visual',
-      description: 'Color tools and visual utilities',
-      tools: [
-        { name: 'Color Palette Generator', path: '/color', icon: '🎨' },
-        { name: 'Timestamp Converter', path: '/timestamp', icon: '⏰' },
-        { name: 'Regex Tester', path: '/regex', icon: '🔍' },
-      ]
-    },
-    {
-      title: 'Developer Utilities',
-      description: 'Essential tools for software development',
-      tools: [
-        { name: 'UUID/GUID Generator', path: '/uuid', icon: '🆔' },
-        { name: 'HTML Entity Encoder', path: '/html-entity', icon: '🏷️' },
-        { name: 'Text Case Converter', path: '/text-case', icon: '📝' },
-        { name: 'Image to Base64 Converter', path: '/image-base64', icon: '🖼️' },
-        { name: 'Environment Variables Manager', path: '/env-vars', icon: '⚙️' },
-      ]
-    },
-    {
-      title: 'Advanced Tools',
-      description: 'Professional development and testing utilities',
-      tools: [
-        { name: 'API Testing Tool', path: '/api-test', icon: '🔌' },
-        { name: 'Cron Expression Builder', path: '/cron-builder', icon: '⏰' },
-      ]
-    },
-    {
-      title: 'Comparison & Analysis',
-      description: 'Compare and analyze text and files',
-      tools: [
-        { name: 'Text Diff Tool', path: '/diff', icon: '📊' },
-      ]
+  const { query, groupedResults, searchResults } = useEnhancedSearch()
+  const navigate = useNavigate()
+
+  // Filter categories based on search and favorites
+  const displayedCategories = useMemo(() => {
+    // If there's a search query, use enhanced search results
+    if (query.trim()) {
+      return groupedResults
     }
-  ]
 
-  // Flatten all tools for search
-  const allTools = useMemo(() => {
-    return toolCategories.flatMap(category => 
-      category.tools.map(tool => ({
-        ...tool,
-        category: category.title,
-        categoryDescription: category.description
-      }))
-    )
-  }, [])
-
-  // Filter tools based on search query and favorites
-  const filteredCategories = useMemo(() => {
-    let baseCategories = toolCategories
-    
-    // Filter by favorites first if requested
+    // If showing favorites only, filter to favorite tools
     if (showFavoritesOnly) {
-      const favoriteTools = allTools.filter(tool => favorites.includes(tool.path))
+      const favoriteTools = searchResults.filter(tool => favorites.includes(tool.path))
       const favoritesMap = new Map()
       
       favoriteTools.forEach(tool => {
         const categoryTitle = tool.category
         if (!favoritesMap.has(categoryTitle)) {
-          const originalCategory = toolCategories.find(cat => cat.title === categoryTitle)
           favoritesMap.set(categoryTitle, {
-            ...originalCategory,
+            title: categoryTitle,
+            description: tool.categoryTitle || '',
             tools: []
           })
         }
@@ -128,49 +40,12 @@ const Home = () => {
         })
       })
       
-      baseCategories = Array.from(favoritesMap.values())
+      return Array.from(favoritesMap.values())
     }
 
-    // Then filter by search query if present
-    if (!searchQuery.trim()) {
-      return baseCategories
-    }
-
-    const query = searchQuery.toLowerCase()
-    const toolsToFilter = showFavoritesOnly 
-      ? allTools.filter(tool => favorites.includes(tool.path))
-      : allTools
-      
-    const matchingTools = toolsToFilter.filter(tool => 
-      tool.name.toLowerCase().includes(query) ||
-      tool.category.toLowerCase().includes(query) ||
-      tool.categoryDescription.toLowerCase().includes(query)
-    )
-
-    // Group matching tools back into categories
-    const categoriesMap = new Map()
-    matchingTools.forEach(tool => {
-      const categoryTitle = tool.category
-      if (!categoriesMap.has(categoryTitle)) {
-        const originalCategory = toolCategories.find(cat => cat.title === categoryTitle)
-        categoriesMap.set(categoryTitle, {
-          ...originalCategory,
-          tools: []
-        })
-      }
-      categoriesMap.get(categoryTitle).tools.push({
-        name: tool.name,
-        path: tool.path,
-        icon: tool.icon
-      })
-    })
-
-    return Array.from(categoriesMap.values())
-  }, [searchQuery, allTools, showFavoritesOnly, favorites])
-
-  const searchResultsCount = useMemo(() => {
-    return filteredCategories.reduce((count, category) => count + category.tools.length, 0)
-  }, [filteredCategories])
+    // Default: show all categories from enhanced search (no query, no filters)
+    return groupedResults
+  }, [query, groupedResults, showFavoritesOnly, favorites, searchResults])
 
   return (
     <main className="max-w-6xl mx-auto">
@@ -182,31 +57,15 @@ const Home = () => {
           Comprehensive collection of free developer tools - Base64 encoder, JSON formatter, JWT generator, hash calculator, regex tester and more. All running locally in your browser with complete privacy.
         </p>
         
-        {/* Search Bar */}
-        <div className="max-w-md mx-auto mb-8">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg leading-5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Search tools..."
-            />
-          </div>
-          {(searchQuery || showFavoritesOnly) && (
-            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400 text-center">
-              {searchResultsCount} tool{searchResultsCount !== 1 ? 's' : ''} 
-              {showFavoritesOnly ? ' in favorites' : ' found'}
-            </div>
-          )}
+        {/* Enhanced Search */}
+        <div className="mb-8">
+          <EnhancedSearch 
+            onToolSelect={(toolPath) => navigate(toolPath)}
+            placeholder="Search tools... (try 'json', 'hash', 'base64', or 'security')"
+          />
         </div>
         
-        {/* Filter Controls */}
+        {/* Favorites Toggle */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center space-x-4 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-sm border border-gray-200 dark:border-gray-700">
             <button
@@ -217,7 +76,7 @@ const Home = () => {
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
-              All Tools ({allTools.length})
+              All Tools (31)
             </button>
             <button
               onClick={() => setShowFavoritesOnly(true)}
@@ -234,7 +93,7 @@ const Home = () => {
       </header>
 
       {/* Recent Tools Section */}
-      {!searchQuery && !showFavoritesOnly && recentTools.length > 0 && (
+      {!query && !showFavoritesOnly && recentTools.length > 0 && (
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -270,7 +129,7 @@ const Home = () => {
       )}
 
       {/* No Results Message */}
-      {searchQuery && filteredCategories.length === 0 && (
+      {query && displayedCategories.length === 0 && (
         <div className="text-center py-12">
           <div className="text-gray-400 dark:text-gray-500 mb-4">
             <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -285,7 +144,7 @@ const Home = () => {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {filteredCategories.map((category) => (
+        {displayedCategories.map((category) => (
           <div
             key={category.title}
             className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
