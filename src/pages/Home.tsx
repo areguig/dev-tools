@@ -51,10 +51,10 @@ const Home = () => {
     <main className="max-w-6xl mx-auto">
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Developer Tools Suite - 31 Professional Utilities
+          Developer Tools Suite - 32 Professional Utilities
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-          Comprehensive collection of free developer tools - Base64 encoder, JSON formatter, JWT generator, hash calculator, regex tester and more. All running locally in your browser with complete privacy.
+          Comprehensive collection of free developer tools - Base64 encoder, JSON formatter, JWT generator, package.json validator, hash calculator, regex tester and more. All running locally in your browser with complete privacy.
         </p>
         
         {/* Enhanced Search */}
@@ -76,7 +76,7 @@ const Home = () => {
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
-              All Tools (31)
+              All Tools (32)
             </button>
             <button
               onClick={() => setShowFavoritesOnly(true)}

@@ -12,6 +12,7 @@ const EnhancedSearch = ({
 }: EnhancedSearchProps) => {
   const [showSuggestions, setShowSuggestions] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const suggestionsRef = useRef<HTMLDivElement>(null)
   
   const { 
     query, 
@@ -53,7 +54,9 @@ const EnhancedSearch = ({
     const handleClickOutside = (event: MouseEvent) => {
       if (
         inputRef.current && 
-        !inputRef.current.contains(event.target as Node)
+        !inputRef.current.contains(event.target as Node) &&
+        suggestionsRef.current &&
+        !suggestionsRef.current.contains(event.target as Node)
       ) {
         setShowSuggestions(false)
       }
@@ -90,11 +93,17 @@ const EnhancedSearch = ({
 
       {/* Search Suggestions Dropdown */}
       {showSuggestions && topSuggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-40 max-h-64 overflow-y-auto">
+        <div 
+          ref={suggestionsRef}
+          className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-40 max-h-64 overflow-y-auto"
+        >
           {topSuggestions.map((tool, index) => (
             <button
               key={tool.path}
-              onClick={() => handleSuggestionClick(tool.path)}
+              onMouseDown={(e) => {
+                e.preventDefault() // Prevent input blur
+                handleSuggestionClick(tool.path)
+              }}
               className={`w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center space-x-3 ${
                 index === 0 ? 'rounded-t-lg' : ''
               } ${

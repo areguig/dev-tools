@@ -320,6 +320,17 @@ export const toolsData: ToolCategory[] = [
         popularity: 4,
         complexity: 'Medium',
         keywords: ['env', 'environment', 'variables', 'config', 'docker', 'yaml']
+      },
+      {
+        name: 'Package.json Validator & Analyzer',
+        path: '/package-json',
+        icon: '📦',
+        category: 'Developer Utilities',
+        description: 'Validate package.json structure, analyze dependencies, and get security recommendations',
+        tags: ['package', 'json', 'validation', 'dependencies', 'security', 'npm', 'node'],
+        popularity: 5,
+        complexity: 'Medium',
+        keywords: ['package.json', 'npm', 'node', 'dependencies', 'validation', 'security', 'audit']
       }
     ]
   },

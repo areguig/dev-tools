@@ -28,6 +28,7 @@ import MarkdownTool from './tools/MarkdownTool'
 import JavaScriptFormatterTool from './tools/JavaScriptFormatterTool'
 import JWTGeneratorTool from './tools/JWTGeneratorTool'
 import EnvVarsTool from './tools/EnvVarsTool'
+import PackageJsonTool from './pages/PackageJsonTool'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { FavoritesProvider } from './contexts/FavoritesContext'
 import { HistoryProvider } from './contexts/HistoryContext'
@@ -70,6 +71,7 @@ function App() {
                 <Route path="/js-formatter" element={<JavaScriptFormatterTool />} />
                 <Route path="/jwt-generator" element={<JWTGeneratorTool />} />
                 <Route path="/env-vars" element={<EnvVarsTool />} />
+                <Route path="/package-json" element={<PackageJsonTool />} />
               </Routes>
             </Layout>
             </Router>
